@@ -1,0 +1,152 @@
+﻿@model AplicacionGrupoMusical.Models.PersonaUsuarioViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>inicio sesión </title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form>
+                        <h1>formulario de ingreso</h1>
+                        <div>
+                            <i class="fa fa-user"></i>
+                            <input type="text" class="form-control" placeholder="Usuario" required="" />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" placeholder="Contraseña" required="" />
+                        </div>
+                        <p>
+                            <a class="btn btn-info submit" href="index.html">ingresar</a>
+                           
+                        </p>
+                         <div class="separator">
+                             <p>
+                                 <a class="change_link" href="#">olvidaste la contraseña?</a>
+                             </p>
+
+                         </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                Nuevo en el sitio?
+                                <a href="#signup" class="to_register"> Crear cuenta </a>
+
+
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <h1><i class="fa fa-music"></i> | Grupo musical</h1>
+                                <p>NEW ORDER</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <div id="register" class="animate form registration_form">
+                <section class="login_content">
+                    @*<form action="@Url.Content("~/Usuario/Create")" method="post">*@
+
+                    @using (Html.BeginForm("create", "Usuario", FormMethod.Post))
+                    {
+                        <h1>registro</h1>
+                        <div>
+                            @*<input type="text" class="form-control" placeholder="Username" required="" />*@
+                      
+                            @Html.TextBoxFor(m => m.usuario.usuario, new { @class = "form-control", placeholder = "Usuario" })
+                        </div>
+                        <div>
+                        
+                            @Html.TextBoxFor(m => m.usuario.correo, new { @class = "form-control", placeholder = "Correo", type = "email" })
+                        </div>
+                        <div>
+                            
+                            @Html.TextBoxFor(m => m.usuario.contraseña, new { @class = "form-control", placeholder = "Contraseña", type = "password" })
+                        </div>
+                        <div>
+                           
+                            @Html.TextBoxFor(m => m.usuario.confirmar_contraseña, new { @class = "form-control", placeholder = "Confirmar Contraseña", type = "password" })
+                        </div>
+                        <div>
+                           
+                            @Html.TextBoxFor(m => m.persona.nombre, new { @class = "form-control", placeholder = "Nombre" })
+                        </div>
+                        <div>
+                           
+                            @Html.TextBoxFor(m => m.persona.apellido, new { @class = "form-control", placeholder = "Apellido" })
+                        </div>
+                        <div>
+                          
+                            @Html.TextBoxFor(m => m.persona.telefono, new { @class = "form-control", placeholder = "Telefono", type = "number" })
+                        </div>
+                        <br />
+
+                        <div>
+                           
+                            @Html.TextBoxFor(m => m.persona.direccion, new { @class = "form-control", placeholder = "Dirección" })
+                        </div>
+                        <div>
+                            <a class="btn btn-info submit" href="index.html">Registrar</a>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                ya eres miembro?
+                                <a href="#signin" class="to_register"> acceso </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <h1><i class="fa fa-music"></i> | GRUPO MUSICAL</h1>
+
+                            </div>
+                        </div>
+                    }
+                    @*</form>*@
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
