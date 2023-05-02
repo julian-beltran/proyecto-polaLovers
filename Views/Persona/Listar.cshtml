@@ -1,0 +1,91 @@
+﻿@model List<APPAdminGroup.Models.PersonaViewModel>
+@{
+    ViewBag.Title = "Listar";
+
+
+}
+
+
+
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Usuarios Registrados<small>Usuarios</small></h2>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                        <p class="text-muted font-13 m-b-30">
+                            Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
+                        </p>
+
+
+                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Telefono</th>
+                                    <th>Direccion</th>
+                                    <th>Descripcion</th>
+                                    <th>Rol</th>
+                                    <th>Usuario</th>
+                                    <th>E-mail</th>
+                                    <th>Fecha Creacion</th>
+                                    <th>Foto</th>
+                                    <th>opciones</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var elemento in Model)
+                                {
+                                <tr>
+                                    <td>@elemento.id</td>
+                                    <td>@elemento.nombre</td>
+                                    <td>@elemento.apelllido</td>
+                                    <td>@elemento.telefono</td>
+                                    <td>@elemento.direccion</td>
+                                    <td>@elemento.descripcion</td>
+                                    <td>@elemento.rol.nombre</td>
+                                    <td>@elemento.usuario.usuario1</td>
+                                    <td>@elemento.usuario.correo</td>
+                                    <td>@elemento.usuario.dateCreate</td>
+                                    <td>
+                                        <img width="100" src="@Url.Action("GetImage","Perfil",new {id=elemento.id})">
+                                    </td>
+                                    <td>
+                                        <input onclick="document.location.href = '@Url.Content("~/Persona/Delete/"+elemento.id)'" type="button" class="btn btn-danger" value="Eliminar" />
+                                        <input onclick="document.location.href = '@Url.Content("~/Persona/Edit/"+elemento.id)'" type="button" class="btn btn-success" value="Editar" />
+                                    </td>
+
+
+
+
+                                </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function jsDelete(id) {
+
+    }
+</script>
+
+

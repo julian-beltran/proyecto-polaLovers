@@ -1,0 +1,68 @@
+﻿@model APPAdminGroup.Models.ContraseñaStartRecoveryViewModel
+@{
+    ViewBag.Title = "ContraseñaStartRecovery";
+
+}
+
+
+
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>RECUPERAR CONTRASEÑA </h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+                        <!-- Smart Wizard -->
+
+                        <div id="step-1">
+                            @using (Html.BeginForm("ContraseñaStartRecovery", "Persona", FormMethod.Post))
+                            {
+
+
+                                <div class="form-group row">
+                                    <label class=" col-md-3 col-sm-3">
+                                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    </label>
+                                    <div class="col-md-5 col-sm-5 ">
+
+                                        @Html.TextBoxFor(m => m.correo, null, new { @class = "form-control", placeholder = "Correo", type = "email" })
+
+
+
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 ">
+
+                                        <button class="btn btn-info">Recuperar</button>
+                                    </div>
+
+
+
+
+
+                                </div>
+
+
+
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 ">
+
+                <a class="btn btn-info" href="https://localhost:44327/Persona/Listar">Volver</a>
+            </div>
+        </div>
+ 
+
+

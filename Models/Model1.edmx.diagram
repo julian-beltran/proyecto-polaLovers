@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0c65265570a343b6a9a8b7e24b23076c" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="DB_PROYECTOModel.Persona" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PROYECTOModel.Rol" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PROYECTOModel.Usuario" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PROYECTOModel.Modulo" Width="1.5" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_PROYECTOModel.Operaciones" Width="1.5" PointX="5.75" PointY="3.5" />
+        <EntityTypeShape EntityType="DB_PROYECTOModel.Rol_Operacion" Width="1.5" PointX="0.75" PointY="6.5" />
+        <EntityTypeShape EntityType="DB_PROYECTOModel.sysdiagrams" Width="1.5" PointX="5.375" PointY="6.75" />
+        <AssociationConnector Association="DB_PROYECTOModel.FK_Persona_Usuario" />
+        <AssociationConnector Association="DB_PROYECTOModel.FK_Operaciones_Modulo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

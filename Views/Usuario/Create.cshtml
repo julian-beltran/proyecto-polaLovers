@@ -1,0 +1,112 @@
+﻿@model APPAdminGroup.Models.Persona
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LogOut.cshtml";
+
+
+}
+
+<body class="login">
+
+
+    <div class="login_wrapper">
+
+
+        <div id="register">
+            <section class="login_content">
+                @*<form action="@Url.Content("~/Usuario/Create")" method="post">*@
+
+                @using (Html.BeginForm("create", "Usuario", FormMethod.Post))
+                {
+                    <h1>registro</h1>
+                    <div>
+                        @*<input type="text" class="form-control" placeholder="Username" required="" />*@
+
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <p class="text-danger">@ViewBag.Error</p>
+
+
+                        @Html.TextBoxFor(m => m.Usuario.usuario1, new { @class = "form-control", placeholder = "Usuario" })
+                    </div>
+                    <div>
+
+                        @Html.TextBoxFor(m => m.Usuario.correo, new { @class = "form-control", placeholder = "Correo", type = "email" })
+                    </div>
+                    <div>
+
+                        @Html.TextBoxFor(m => m.Usuario.contraseña, new { @class = "form-control", placeholder = "Contraseña", type = "password", id = "contraseña" })
+                    </div>
+
+                    <div>
+
+                        @Html.TextBoxFor(m => m.Usuario.confirmar_contraseña, new { @class = "form-control", placeholder = "confirmar Contraseña", type = "password", id = "confirmar_contraseña" })
+                    </div>
+
+                    <div>
+
+                        @Html.TextBoxFor(m => m.nombre, new { @class = "form-control", placeholder = "Nombre" })
+                    </div>
+                    <div>
+
+                        @Html.TextBoxFor(m => m.apelllido, new { @class = "form-control", placeholder = "Apellido" })
+                    </div>
+                    <div>
+
+                        @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", placeholder = "Telefono", type = "number" })
+                    </div>
+                    <br />
+
+                    <div>
+
+                        @Html.TextBoxFor(m => m.direccion, new { @class = "form-control", placeholder = "Dirección" })
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-info">Registrar</button>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">
+                            ya eres miembro?
+                            <a href="../Usuario/Index" class="to_register"> acceso </a>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div>
+                            <h1><i class="fa fa-music"></i> | GRUPO MUSICAL</h1>
+
+                        </div>
+                    </div>
+                }
+                @*</form>*@
+            </section>
+        </div>
+    </div>
+</body>
+   
+<style>
+    .login_content {
+        margin: 0 auto;
+        padding: 70px 0 0;
+        position: relative;
+        text-align: center;
+        text-shadow: 0 1px 0 #fff;
+        min-width: 280px;
+        min-height: 100vh;
+    }
+    .login_wrapper {
+        right: 0px;
+        margin: 0px auto;
+        margin-top: 0;
+        max-width: 350px;
+        position: relative;
+    }
+</style>
+
+

@@ -1,0 +1,169 @@
+﻿@model APPAdminGroup.Models.PersonaEditViewModel
+@{
+    ViewBag.Title = "Edit";
+
+}
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Formulario de Clientes</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Formulario de Clientes <small>formulario</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Settings 1</a>
+                                <a class="dropdown-item" href="#">Settings 2</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    @using (Html.BeginForm("Edit", "Persona", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(m => m.id)
+
+                        <p>
+                            Agregar Clientes o integrantes del Grupo Musical
+                        </p>
+                        <span class="section">
+                            informacion Personas
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            <p class="text-danger">@ViewBag.Error</p>
+                        </span>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Nombre</label>
+                            <div class="col-md-6 col-sm-6">
+                                @Html.TextBoxFor(m => m.nombre, new { @class = "form-control", placeholder = "Nombre" })
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Apellido</label>
+                            <div class="col-md-6 col-sm-6">
+                                @Html.TextBoxFor(m => m.apelllido, new { @class = "form-control", placeholder = "Apellido" })
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Correo</label>
+                            <div class="col-md-6 col-sm-6">
+                                @Html.TextBoxFor(m => m.correo, new { @class = "form-control", placeholder = "Correo", type = "email" })
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Telefono <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6">
+                                @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", placeholder = "Telefono", type = "number" })
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Direccion</label>
+                            <div class="col-md-6 col-sm-6">
+                                @Html.TextBoxFor(m => m.direccion, new { @class = "form-control", placeholder = "Dirección" })
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Usuario</label>
+                            <div class="col-md-6 col-sm-6">
+                                @Html.TextBoxFor(m => m.usuario1, new { @class = "form-control", placeholder = "Usuario" })
+                            </div>
+                        </div>
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Usuario</label>
+                            <div class="col-md-6 col-sm-6">
+                                @Html.DropDownListFor(m => m.id_rol, new SelectList(ViewBag.lista, "id", "nombre"), "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        @*<div class="field item form-group">
+                <label class="col-form-label col-md-3 col-sm-3  label-align">Contraseña<span class="required">*</span></label>
+                <div class="col-md-6 col-sm-6">
+                    @Html.TextBoxFor(m => m.contraseña, new { @class = "form-control", placeholder = "Contraseña", type = "password", id = "contraseña" })
+
+                    <span style="position: absolute;right:15px;top:7px;" onclick="hideshow()">
+                        <i id="slash" class="fa fa-eye-slash"></i>
+                        <i id="eye" class="fa fa-eye"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field item form-group">
+                <label class="col-form-label col-md-3 col-sm-3  label-align"> Confirmar Contraseña <span class="required">*</span></label>
+                <div class="col-md-6 col-sm-6">
+                    @Html.TextBoxFor(m => m.confirmar_contraseña, new { @class = "form-control", placeholder = "confirmar Contraseña", type = "password", id = "confirmar_contraseña" })
+
+                </div>
+            </div>*@
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Cambiar Contraseña</label>
+                            <div class="col-md-6 col-sm-6">
+                                <input onclick="document.location.href = '@Url.Content("~/Persona/ContraseñaStartRecovery")'" type="button" class="btn btn-success" value="cambiar Contraseña" />
+                            </div>
+                        </div>
+
+                        <div class="field item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Descripcion<span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6">
+
+                                @Html.TextAreaFor(m => m.descripcion, new { placeholder = "descripcion" })
+                            </div>
+                        </div>
+                        <div class="ln_solid">
+                            <div class="form-group">
+                                <div class="col-md-6 offset-md-3">
+                                    <button type='submit' class="btn btn-primary">Aceptar</button>
+                                    <button type='reset' class="btn btn-success">Resetear</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function hideshow() {
+        var password = document.getElementById("contraseña");
+        var slash = document.getElementById("slash");
+        var eye = document.getElementById("eye");
+
+        if (password.type === 'password') {
+            password.type = "text";
+            slash.style.display = "block";
+            eye.style.display = "none";
+        }
+        else {
+            password.type = "password";
+            slash.style.display = "none";
+            eye.style.display = "block";
+        }
+
+    }
+</script>
+
+
+<script>
+
+    // on form "reset" event
+    document.forms[0].onreset = function (e) {
+        validator.reset();
+    };
+
+
+
+</script>

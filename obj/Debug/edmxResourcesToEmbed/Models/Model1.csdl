@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_PROYECTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apelllido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="id_rol" Type="Int32" />
+    <NavigationProperty Name="Usuario" Relationship="DB_PROYECTOModel.FK_Persona_Usuario" FromRole="Persona" ToRole="Usuario" />
+    <NavigationProperty Name="Rol" Relationship="DB_PROYECTOModel.FK_Persona_Rol" FromRole="Persona" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Persona" Relationship="DB_PROYECTOModel.FK_Persona_Rol" FromRole="Rol" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="contraseña" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="confirmar_contraseña" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="confirmarEmail" Type="Boolean" />
+    <Property Name="tokenCorreo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="dateCreate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Persona" Relationship="DB_PROYECTOModel.FK_Persona_Usuario" FromRole="Usuario" ToRole="Persona" />
+    <Property Name="tokenContraseña" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="DB_PROYECTOEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Persona" EntityType="Self.Persona" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="Modulo" EntityType="DB_PROYECTOModel.Modulo" />
+    <EntitySet Name="Operaciones" EntityType="DB_PROYECTOModel.Operaciones" />
+    <EntitySet Name="Rol_Operacion" EntityType="DB_PROYECTOModel.Rol_Operacion" />
+    <EntitySet Name="sysdiagrams" EntityType="DB_PROYECTOModel.sysdiagrams" />
+    <AssociationSet Name="FK_Persona_Usuario" Association="DB_PROYECTOModel.FK_Persona_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Rol" Association="DB_PROYECTOModel.FK_Persona_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operaciones_Modulo" Association="DB_PROYECTOModel.FK_Operaciones_Modulo">
+      <End Role="Modulo" EntitySet="Modulo" />
+      <End Role="Operaciones" EntitySet="Operaciones" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Operaciones" Relationship="DB_PROYECTOModel.FK_Operaciones_Modulo" FromRole="Modulo" ToRole="Operaciones" />
+  </EntityType>
+  <EntityType Name="Operaciones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" />
+    <Property Name="id_operacion" Type="Int32" />
+    <NavigationProperty Name="Modulo" Relationship="DB_PROYECTOModel.FK_Operaciones_Modulo" FromRole="Operaciones" ToRole="Modulo" />
+  </EntityType>
+  <EntityType Name="Rol_Operacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRol" Type="Int32" />
+    <Property Name="idOperacion" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Persona_Usuario">
+    <End Type="DB_PROYECTOModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+    <End Type="DB_PROYECTOModel.Persona" Role="Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Rol">
+    <End Type="DB_PROYECTOModel.Rol" Role="Rol" Multiplicity="0..1" />
+    <End Type="DB_PROYECTOModel.Persona" Role="Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="id_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operaciones_Modulo">
+    <End Type="DB_PROYECTOModel.Modulo" Role="Modulo" Multiplicity="0..1" />
+    <End Type="DB_PROYECTOModel.Operaciones" Role="Operaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Operaciones">
+        <PropertyRef Name="id_operacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

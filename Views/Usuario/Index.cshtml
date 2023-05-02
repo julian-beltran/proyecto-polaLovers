@@ -1,0 +1,89 @@
+﻿@model APPAdminGroup.Models.loginViewModel
+@{
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LogOut.cshtml";
+
+}
+
+
+
+<body class="login">
+    <div>
+
+        <div class="login_wrapper">
+
+            <section class="login_content">
+                <form action="@Url.Content("../Usuario/Index")" method="post">
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.confirmarEmail)
+                    <p class="text-danger">@ViewBag.Error</p>
+                    <p class="text-danger">@ViewBag.Message</p>
+
+                    <h1>formulario de ingreso</h1>
+                    <div>
+                        <i class="fa fa-user"></i>
+                        @Html.TextBoxFor(m => m.usuario1, new { @class = "form-control", placeholder = "Usuario" })
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.contraseña, new { @class = "form-control", placeholder = "Contraseña", type = "password", id = "contraseña" })
+                    </div>
+                    <p>
+                        <button type="submit" class="btn btn-info">Acceder</button>
+
+                    </p>
+                    <div class="separator">
+                        <p>
+                            <a class="change_link" href="~/usuario/ContraseñaStartRecovery">olvidaste la contraseña?</a>
+                        </p>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">
+                            Nuevo en el sitio?
+                            <a href="../Usuario/Create" class="to_register"> Crear cuenta </a>
+
+
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div>
+                            <h1><i class="fa fa-music"></i> | Grupo musical</h1>
+                            <p>NEW ORDER</p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+
+        <style>
+            .login_content {
+                margin: 0 auto;
+                padding: 70px 0 0;
+                position: relative;
+                text-align: center;
+                text-shadow: 0 1px 0 #fff;
+                min-width: 280px;
+                min-height: 100vh;
+            }
+
+            .login_wrapper {
+                right: 0px;
+                margin: 0px auto;
+                margin-top: 0;
+                max-width: 350px;
+                position: relative;
+            }
+        </style>
+
+
+
+
+    </div>
+</body>

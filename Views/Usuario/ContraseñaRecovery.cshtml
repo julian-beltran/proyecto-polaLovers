@@ -1,0 +1,89 @@
+﻿@model APPAdminGroup.Models.ContraseñaRecoveryViewModel
+@{
+    ViewBag.Title = "ContraseñaRecovery";
+
+}
+
+
+
+
+
+<div class="right_col">
+    <div class="container2">
+
+
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>RECUPERAR CONTRASEÑA <small></small></h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+                        <!-- Smart Wizard -->
+
+                        <div id="step-1">
+                            @using (Html.BeginForm("ContraseñaRecovery", "Usuario", FormMethod.Post))
+                            {
+
+                                @Html.HiddenFor(m => m.tokenContraseña)
+
+                                <div class="form-group row">
+                                    <label class=" col-md-3 col-sm-3">
+                                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        @Html.TextBoxFor(m => m.contraseña, new { @class = "form-control", placeholder = "Contraseña", type = "password", id = "contraseña" })
+                                        <br />
+                                    </div>
+                                    <label class=" col-md-3 col-sm-3">
+
+                                    </label>
+                                    <label class=" col-md-3 col-sm-3">
+
+                                    </label>
+
+                                    <div class="col-md-6 col-sm-6 ">
+                                        @Html.TextBoxFor(m => m.confirmar_contraseña, new { @class = "form-control", placeholder = "confirmar Contraseña", type = "password", id = "confirmar_contraseña" })
+                                    </div>
+                                    <label class=" col-md-3 col-sm-3">
+
+                                        <button class="btn btn-info">Recuperar</button>
+
+                                    </label>
+
+
+
+
+
+                                </div>
+
+
+
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <a class="btn btn-info" href="https://localhost:44327/Usuario/Index">Volver</a>
+        </div>
+    </div>
+</div>
+<style>
+    .container2 {
+        width: 100%;
+        padding: 190px;
+        max-width: 100%;
+        min-height: 100vh;
+    }
+</style>
